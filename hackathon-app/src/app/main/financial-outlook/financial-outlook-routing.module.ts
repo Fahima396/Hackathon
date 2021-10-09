@@ -8,7 +8,7 @@ const routes: Routes = [
     component: FinancialPageComponent,
     children: [
       {
-        path: 'about',
+        path: 'financial',
         loadChildren: () => import('./financial-page/financial-page.component').then(m => m.FinancialPageComponent)
       },
     ]
