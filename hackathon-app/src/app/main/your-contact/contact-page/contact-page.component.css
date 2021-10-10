@@ -25,3 +25,12 @@
   display: inline-block;
   font-size: 16px;
 }
+input.ng-invalid{
+  border-left: 3px solid red;
+}
+input.ng-valid{
+  border-left: 3px solid green;
+}
+.error{
+  color:red;
+}

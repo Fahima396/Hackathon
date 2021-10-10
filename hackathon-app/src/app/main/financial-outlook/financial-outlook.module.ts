@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FinancialOutlookRoutingModule } from './financial-outlook-routing.module';
 import { FinancialPageComponent } from './financial-page/financial-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FinancialPageComponent } from './financial-page/financial-page.componen
   ],
   imports: [
     CommonModule,
-    FinancialOutlookRoutingModule
+    FinancialOutlookRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class FinancialOutlookModule { }

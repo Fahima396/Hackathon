@@ -7,18 +7,27 @@
                    <h1 class="text-center">Your Contact</h1>
                </div>
                <div class="card-body">
-                <form>
+                <form [formGroup]="contactPage">
                     <div class="form-group">
                       <label for="InputEmail">Email address</label>
-                      <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                      <input type="email" class="form-control" formControlName="email" id="InputEmail"  name="email" formControlName="email"
+                      placeholder="Enter email" [class.is-invalid]="email?.invalid && email?.touched"
+                      [class.is-valid]="email?.valid && email?.touched">
+                  <div *ngIf="email?.invalid && email?.touched">
+                      <small class="text-danger" *ngIf="email?.errors?.required">field is required</small>
+                  </div> 
                     </div>
                     <div class="form-group">
                       <label for="Phone">Phone No</label>
-                      <input type="number" class="form-control" id="Phone" placeholder="Phone">
+                      <input type="number" class="form-control" id="Phone" formControlName="phone" placeholder="Phone" [class.is-invalid]="phone?.invalid && phone?.touched"
+                      [class.is-valid]="phone?.valid && phone?.touched">
+                  <div *ngIf="phone?.invalid && phone?.touched">
+                      <small class="text-danger" *ngIf="phone?.errors?.required">field is required</small>
+                  </div>
                     </div>
 
-                    <a routerLink="/financial"><button class="btn-previous" > Previoius </button></a>
-                    <button type="submit" class="btn-primary">Show me</button>
+                    <a routerLink="/financial"><button class=" btn btn-previous" type="button" > Previoius </button></a>
+                    <button type="submit" class="btn btn-primary" (click)="contactPageSub()" [disabled]="contactPage.invalid">Show me</button>
                     
                   </form>
                </div>

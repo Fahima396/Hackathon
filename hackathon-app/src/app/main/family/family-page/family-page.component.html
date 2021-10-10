@@ -2,32 +2,60 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <img src="../../../../assets/family.jpg" style="width: 100%;">
-           <div class="card">
-               <div class="card-header">
-                   <h1 class="text-center">Family</h1>
-               </div>
-               <div class="card-body">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleInputText">Are you married ?</label>
-                      <input type="text" class="form-control" id="exampleInputText" placeholder="Yes/No">
-                      
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputField">How many Children do you have ?</label>
-                      <input type="number" class="form-control" id="exampleInputField" placeholder="1, 2, or 3">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInput">How old are you ?</label>
-                        <input type="number" class="form-control" id="exampleInput" placeholder="age">
-                      </div>
-                      
-                      <a routerLink=""><button class="btn-previous" > Previoius </button></a>
-                      <a routerLink="/financial"><button class="btn-primary" > Next </button></a>
-                     
-                  </form>
-               </div>
-           </div>
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Family</h1>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="familyPage">
+                        <fieldset class="form-group">
+
+                            <label>Are you married</label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" required name="gridRadios" id="gridRadios1"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" required name="gridRadios" id="gridRadios2"
+                                    value="option2">
+                                <label class="form-check-label" for="gridRadios2">
+                                    No
+                                </label>
+                            </div>
+
+
+                        </fieldset>
+
+                        <div class="form-group">
+                            <label for="exampleInputField">How many Children do you have ?</label>
+                            <input type="number" class="form-control" name="children"
+                                formControlName="children" placeholder="1, 2, or 3"
+                                [class.is-invalid]="children?.invalid && children?.touched"
+                                [class.is-valid]="children?.valid && children?.touched">
+                            <div *ngIf="children?.invalid && children?.touched">
+                                <small class="text-danger" *ngIf="children?.errors?.required">field is required</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInput">How old are you ?</label>
+                            <input type="number" class="form-control" name="old" formControlName="old"
+                                placeholder="age" [class.is-invalid]="old?.invalid && old?.touched"
+                                [class.is-valid]="old?.valid && old?.touched">
+                            <div *ngIf="old?.invalid && old?.touched">
+                                <small class="text-danger" *ngIf="old?.errors?.required">field is required</small>
+                            </div>
+                        </div>
+
+                        <a routerLink=""><button type="button" class=" btn btn-previous"> Previoius </button></a>
+                        <a routerLink="/financial"><button type="button" class=" btn btn-primary" (click)="familyPageSub()" [disabled]="familyPage.invalid"> Next </button></a>
+
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

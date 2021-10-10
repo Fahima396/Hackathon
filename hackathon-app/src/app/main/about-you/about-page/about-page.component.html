@@ -1,32 +1,48 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <h1 class="tex-center">AR RETIREMENT
-            PLAN GAMIFIED APP</h1>
-          <img src="../../../../assets/aboutpage.jpg" style="width: 100%;">
-           <div class="card">
-               <div class="card-header">
-                   <h1 class="text-center">About Yourself</h1>
-               </div>
-               <div class="card-body">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleInputText">What's Your Age ?</label>
-                      <input type="number" class="form-control" id="exampleInputText" placeholder="Enter Your Age">
-                      
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputField">When Do You Want To Retire ?</label>
-                      <input type="number" class="form-control" id="exampleInputField" placeholder="Enter In Years">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInput">Tell Us How Much You Earn Monthly ?</label>
-                        <input type="number" class="form-control" id="exampleInput" placeholder="Your Monthly Salary">
-                      </div>
-                       <a routerLink="/family"><button class="btn-primary" > Next </button></a>
-                  </form>
-               </div>
-           </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="tex-center">AR RETIREMENT
+        PLAN GAMIFIED APP</h1>
+      <img src="../../../../assets/aboutpage.jpg" style="width: 100%;">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">About Yourself</h1>
         </div>
+        <div class="card-body">
+          <form [formGroup]="aboutPage">
+            <div class="form-group">
+              <label for="exampleInputText">What's Your Age ?</label>
+              <input type="number" class="form-control" name="age" required formControlName="age"
+                placeholder="Enter Your Age" [class.is-invalid]="age?.invalid && age?.touched"
+                [class.is-valid]="age?.valid && age?.touched">
+              <div *ngIf="age?.invalid && age?.touched">
+                <small class="text-danger" *ngIf="age?.errors?.required">age is required</small>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <label for="exampleInputField">When Do You Want To Retire ?</label>
+              <input type="number" class="form-control" formControlName="retire" id="exampleInputField"
+                placeholder="Enter In Years" [class.is-invalid]="retire?.invalid && retire?.touched"
+                [class.is-valid]="retire?.valid && retire?.touched">
+              <div *ngIf="retire?.invalid && retire?.touched">
+                <small class="text-danger" *ngIf="retire?.errors?.required">field is required</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInput">Tell Us How Much You Earn Monthly ?</label>
+              <input type="number" class="form-control" formControlName="earn" id="exampleInput"
+                placeholder="Your Monthly Salary" [class.is-invalid]="earn?.invalid && earn?.touched"
+                [class.is-valid]="earn?.valid && earn?.touched">
+              <div *ngIf="earn?.invalid && earn?.touched">
+                <small class="text-danger" *ngIf="earn?.errors?.required">field is required</small>
+              </div>
+            </div>
+            <a routerLink="/family"><button type="button" (click)="aboutPageSub()" [disabled]="aboutPage.invalid"
+                class=" btn btn-primary"> Next </button></a>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

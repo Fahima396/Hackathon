@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { FamilyRoutingModule } from './family-routing.module';
 import { FamilyPageComponent } from './family-page/family-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { FamilyPageComponent } from './family-page/family-page.component';
   ],
   imports: [
     CommonModule,
-    FamilyRoutingModule
+    FamilyRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class FamilyModule { }

@@ -7,29 +7,49 @@
                    <h1 class="text-center">Financial outlook</h1>
                </div>
                <div class="card-body">
-                <form>
+                <form [formGroup]="financialPage">
                     <div class="form-group">
                       <label for="Income">Total Household Income</label>
-                      <input type="number" class="form-control" id="Income" placeholder="Income">
+                      <input type="number" class="form-control" name="income" required formControlName="income" id="Income" placeholder="Income"
+                      [class.is-invalid]="income?.invalid && income?.touched"
+                [class.is-valid]="income?.valid && income?.touched">
+              <div *ngIf="income?.invalid && income?.touched">
+                <small class="text-danger" *ngIf="income?.errors?.required">field is required</small>
+              </div>
                       
                     </div>
                     <div class="form-group">
                       <label for="Savings">Current savings</label>
-                      <input type="number" class="form-control" id="Savings" placeholder="saving">
+                      <input type="number" class="form-control" name="savings" formControlName="savings" required id="Savings" placeholder="saving"
+                      [class.is-invalid]="savings?.invalid && savings?.touched"
+                [class.is-valid]="savings?.valid && savings?.touched">
+              <div *ngIf="savings?.invalid && savings?.touched">
+                <small class="text-danger" *ngIf="savings?.errors?.required">field is required</small>
+              </div>
                     </div>
                     <div class="form-group">
                         <label for="Retire">How much do you think you will need 
                             monthly when you retire</label>
-                        <input type="number" class="form-control" id="Retire" placeholder="retire">
+                        <input type="number" class="form-control" name="retire" formControlName="retire" required id="Retire" placeholder="retire"
+                        [class.is-invalid]="retire?.invalid && retire?.touched"
+                [class.is-valid]="retire?.valid && retire?.touched">
+              <div *ngIf="retire?.invalid && retire?.touched">
+                <small class="text-danger" *ngIf="retire?.errors?.required">field is required</small>
+              </div>
                       </div>
                       <div class="form-group">
                         <label for="investment">What will be your monthly contribution 
                         towards your investment plan</label>
-                        <input type="number" class="form-control" id="investment" placeholder="investment">
+                        <input type="number" class="form-control" name="investment" formControlName="investment" required id="investment" placeholder="investment"
+                         [class.is-invalid]="investment?.invalid && investment?.touched"
+                        [class.is-valid]="investment?.valid && investment?.touched">
+                      <div *ngIf="investment?.invalid && investment?.touched">
+                        <small class="text-danger" *ngIf="investment?.errors?.required">field is required</small>
+                      </div>
                       </div>
 
-                      <a routerLink="/family"><button class="btn-previous" > Previoius </button></a>
-                      <a routerLink="/contact"><button class="btn-primary" > Next </button></a>
+                      <a routerLink="/family"><button class=" btn btn-previous" type="button"> Previoius </button></a>
+                      <a routerLink="/contact"><button class=" btn btn-primary" type="button" (click)="financialPageSub()" [disabled]="financialPage.invalid" > Next </button></a>
                       
                   </form>
                </div>
